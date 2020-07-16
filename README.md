@@ -9,7 +9,7 @@ Unfortunately, `IPreprocessBuildWithReport` and `IPostprocessBuildWithReport` do
 I tried to fix this situation by implementing an abstract class `BaseProcessBuildWithReportSafe` which implements both `IPreprocessBuildWithReport` and `IPostprocessBuildWithReport` and provides an extra abstract method `OnBuildFailed` which is called (as it's seen from its name) in case the build failed.
 
 ### Caveat
-Despite I tested this solution in a real project, I'm still not sure that it can handle every case of the failed build. The fact is that Unity does not provide any API to catch exceptions globaly. That's why I had to use `Application.logMessageReceived` to intercept the logs and by searching for some footprints determine that the build actually failed.  
+Despite I tested this solution in a real project, I'm still not sure that it can handle every case of the failed build. The fact is that Unity does not provide any API to catch exceptions globaly. That's why I had to use `Application.logMessageReceived` to intercept the logs and by searching for some footprints to determine that the build actually failed.  
 It means that this routine may be extended or changed in future to detect build fails more reliably.
 
 ## Usage
